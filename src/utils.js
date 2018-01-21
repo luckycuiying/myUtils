@@ -216,7 +216,7 @@ var utils = {
         return arr;
     },
     uniqueEs6: function(arr){
-        return Array.form(new set(arr))
+        return Array.form(new Set(arr))
     }  
 }
 

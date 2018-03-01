@@ -6,7 +6,6 @@ var utilsDom = (function() {
         则说明是IE6~8  这种思想就是惰性思想
      */
     var flag = "getComputedStyle" in window;
-    console.log(flag)
     function listToArray(likeArr) {
         var ary = [];
         if (flag) {
@@ -192,7 +191,7 @@ var utilsDom = (function() {
     function insertAfter(newEle,oldEle){
         var nex = this.next(oldEle);
         if(nex){
-            oldEle.parentNode.insertBefore(newEle,oldEle);
+            oldEle.parentNode.insertBefore(newEle,nex);
         }
         oldEle.parentNode.appendChild(newEle);
     }

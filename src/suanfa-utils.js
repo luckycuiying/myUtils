@@ -194,7 +194,7 @@ var utils = {
      * 对象不存在重复的属性名原理来做数组去重
      * i--: 因为splice(i,1)得删除导致数组塌陷索引值少一位。
      */
-    unRepeat: function(arr) {
+    unique: function(arr) {
         var obj = {};
         for (var i = 0; i < arr.length; i++) {
             var cur = arr[i];
@@ -208,11 +208,17 @@ var utils = {
         obj = null;
         return arr;
     },
+    uniqueES5:function(ary){
+        var cache = {};
+           return arr.filter((item) => {
+               return cache[item] ? false : (cache[item] = true);
+           });
+    }
     /* 数组去重
      *  循环那前一项和后一项比较，如果相等就是重复了，就删除
      * j--: 因为splice(i,1)得删除导致数组塌陷索引值少一位。
      */
-    unRepeat2: function(arr) {
+    unique2: function(arr) {
         for (var i = 0; i < arr.length; i++) {
             var cur = arr[i];
             for (var j = i + 1; j < arr.length; j++) {
@@ -349,6 +355,7 @@ var utils = {
         }
         return Math.round(Math.random() * (m - n) + n);
     },
+    // 根据某一个数组的顺序排序
     arrIdSort: function(arr, arr2) {
         var ary = [];
         for (var i = 0; i < arr.length; i++) {
@@ -363,7 +370,6 @@ var utils = {
         return ary;
     },
     mapOrder:function (array, order, key) {
-
         array.sort(function(a, b) {
             var A = a[key],
                 B = b[key];
@@ -399,8 +405,11 @@ var utils = {
             return val.replace(val.charAt(0),val.charAt(0).toUpperCase());
         })
         return result.join(' ');
+    },
+    // 判断字符串正和反转是否一致
+    isPalindromicA:function(str){
+        return (str === str.split('').reverse().join(''));
     }
-
 }
 
   //var str = '2018-02-07 20:40:05';  转换成 2018年02月07日 20小时 40分 05秒
